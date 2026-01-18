@@ -7,7 +7,7 @@ app = Flask(__name__)
 DATABASE = 'url_shortener.db'
 
 def init_db():
-    "Create database table if it doesn't exist"
+    """Create database table if it doesn't exist"""
     if not os.path.exists(DATABASE):
         conn = sqlite3.connect(DATABASE)
         c = conn.cursor()
@@ -62,9 +62,7 @@ def home():
         # create full shortened URL with host
         shortened_url = f"{request.host}/{short_code}"
     
-    # display urls
-    all_urls = get_all_urls()
-    return render_template("home.html", shortened_url=shortened_url, all_urls=all_urls)
+    return render_template("home.html", shortened_url=shortened_url)
 
 # route to handle shortened links
 @app.route("/<short_code>")
