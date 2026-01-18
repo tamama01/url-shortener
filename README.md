@@ -12,6 +12,7 @@ Test it locally by following these steps:
 git clone https://github.com/tamama01/url-shortener.git
 cd url-shortener
 ```
+or simply download the .zip file, and extract the folder.
 
 2. Create and activate a virtual environment  
 
