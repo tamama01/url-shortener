@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <title>Main Page</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">URL Shortener</h1> 
+
+    <form method="POST" style="text-align: center;">
+        <input type="url" name="url_input" placeholder="Enter URL" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!--    Jinja   -->
+    {% if shortened_url %}
+        <p style="font-size: 18px; text-align: center;">Shortened URL: <a href="http://{{ shortened_url }}" target="_blank">{{ shortened_url }}</a></p>
+    {% endif %}
+
+    <hr style="margin: 30px 0;">
+
+    {% if all_urls %}
+
+        <h2 style="text-align: center;">All Shortened URLs</h2>
+        <table style="margin: 20px auto; border-collapse: collapse; width: 80%;">
+            <thead>
+                <tr style="background-color: #f0f0f0;">
+                    <th style="border: 1px solid #ddd; padding: 10px;">Short URL</th>
+                    <th style="border: 1px solid #ddd; padding: 10px;">Original URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for short_code, original_url in all_urls %}
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px;"><a href="http://{{ request.host }}/{{ short_code }}" target="_blank">{{ request.host }}/{{ short_code }}</a></td>
+                        <td style="border: 1px solid #ddd; padding: 10px;"><a href="{{ original_url }}" target="_blank">{{ original_url }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+
+</html>
