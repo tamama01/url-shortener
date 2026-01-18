@@ -36,15 +36,6 @@ def get_url(short_code):
     conn.close()
     return result[0] if result else None
 
-def get_all_urls():
-    """Get all shortened URLs from database"""
-    conn = sqlite3.connect(DATABASE)
-    c = conn.cursor()
-    c.execute('SELECT short_code, original_url FROM urls')
-    urls = c.fetchall()
-    conn.close()
-    return urls
-
 # mainpage or index
 @app.route("/", methods=["GET", "POST"])
 def home():
