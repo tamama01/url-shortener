@@ -1,5 +1,6 @@
 This is a simple URL Shortener mini project.
 Test it here: https://url-shortener-mag8.onrender.com/
+Running locally, it will also create a database in your directory called `url_shortener.db`. Your shortened url `http://127.0.0.1:5000/{shortened-url}` will be stored here.
 
 Note: Since it used free instance of Render Web Service, expect it to have have 60 seconds delay when accessing it after long period of inactivity.
 
