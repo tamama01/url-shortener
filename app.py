@@ -45,7 +45,16 @@ def home():
 
         # generate 6 random characters
         characters = string.ascii_letters + string.digits
-        short_code = ''.join(random.choice(characters) for _ in range(6))
+        while True:
+            short_code = ''.join(random.choice(characters) for _ in range(6))
+            # check if short_code already exists
+            conn = sqlite3.connect(DATABASE)
+            c = conn.cursor()
+            c.execute('SELECT short_code FROM urls WHERE short_code = ?', (short_code,))
+            existing = c.fetchone()
+            conn.close()
+            if not existing:
+                break
         
         # save to database
         save_url(short_code, url)
